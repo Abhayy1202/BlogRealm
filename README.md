@@ -28,6 +28,12 @@ To run BlogRealm locally, follow these steps:
 git clone https://github.com/abhayy1202/blogrealm.git
 cd blogrealm
 ```
+
+### 2. Install dependencies:
+```bash
+npm install
+```
+
 ## Packages Used
 The following are the key packages used in the project:
 
