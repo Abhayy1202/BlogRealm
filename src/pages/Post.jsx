@@ -4,6 +4,7 @@ import appwriteService from "../appwrite/config";
 import { Button, Container } from "../components";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
+import background from "../../Images/blog2.jpg";
 
 export default function Post() {
     const [post, setPost] = useState(null);
@@ -38,8 +39,9 @@ export default function Post() {
                 <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
                     <img
                         src={appwriteService.getFilePreview(post.featuredImage)}
+                        // src={`${background}`}
                         alt={post.title}
-                        className="rounded-xl"
+                        className="rounded-xl h-12"
                     />
 
                     {isAuthor && (
