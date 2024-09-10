@@ -71,52 +71,63 @@ export default function PostForm({ post }) {
     }, [watch, slugTransform, setValue]);
 
     return (
-        <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-            <div className="w-2/3 px-2">
-                <Input
-                    label="Title :"
-                    placeholder="Title"
-                    className="mb-4"
-                    {...register("title", { required: true })}
-                />
-                <Input
-                    label="Slug :"
-                    placeholder="Slug"
-                    className="mb-4"
-                    {...register("slug", { required: true })}
-                    onInput={(e) => {
-                        setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
-                    }}
-                />
-                <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
+      <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
+        <div className="w-2/3 px-2 dark:text-gray-200">
+          <Input
+            label="Title :"
+            placeholder="Title"
+            className="mb-4 bg-gray-600 text-gray-200 focus:bg-gray-600 focus:text-gray-200"
+            {...register("title", { required: true })}
+          />
+          <Input
+            label="Slug :"
+            placeholder="Slug"
+            className="mb-4 bg-gray-600 text-gray-200 focus:bg-gray-600 focus:text-gray-200"
+            {...register("slug", { required: true })}
+            onInput={(e) => {
+              setValue("slug", slugTransform(e.currentTarget.value), {
+                shouldValidate: true,
+              });
+            }}
+          />
+          <RTE
+            label="Content :"
+            name="content"
+            control={control}
+            defaultValue={getValues("content")}
+          />
+        </div>
+        <div className="w-1/3 px-2 dark:text-gray-200">
+          <Input
+            label="Featured Image :"
+            type="file"
+            className="mb-4 bg-gray-600 text-gray-200 focus:bg-gray-600 focus:text-gray-200"
+            accept="image/png, image/jpg, image/jpeg, image/gif"
+            {...register("image", { required: !post })}
+          />
+          {post && (
+            <div className="w-full mb-4 rounded-md dark:outline dark:outline-offset-2 dark:outline-gray-500">
+              <img
+                src={appwriteService.getFilePreview(post.featuredImage)}
+                alt={post.title}
+                className="rounded-lg"
+              />
             </div>
-            <div className="w-1/3 px-2">
-                <Input
-                    label="Featured Image :"
-                    type="file"
-                    className="mb-4"
-                    accept="image/png, image/jpg, image/jpeg, image/gif"
-                    {...register("image", { required: !post })}
-                />
-                {post && (
-                    <div className="w-full mb-4">
-                        <img
-                            src={appwriteService.getFilePreview(post.featuredImage)}
-                            alt={post.title}
-                            className="rounded-lg"
-                        />
-                    </div>
-                )}
-                <Select
-                    options={["active", "inactive"]}
-                    label="Status"
-                    className="mb-4"
-                    {...register("status", { required: true })}
-                />
-                <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">
-                    {post ? "Update" : "Submit"}
-                </Button>
-            </div>
-        </form>
+          )}
+          <Select
+            options={["Active", "Inactive"]}
+            label="Status"
+            className="mb-4 mt-6 bg-gray-600 text-gray-200 focus:bg-gray-600 focus:text-gray-200"
+            {...register("status", { required: true })}
+          />
+          <Button
+            type="submit"
+            bgColor={post ? "bg-green-500" : undefined}
+            className="w-full shadow-md  transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 duration-150 bg-gradient-to-r from-[#656561] to-[#125555] dark:from-teal-500 dark:to-blue-600 hover:from-pink-700 hover:to-orange-700"
+          >
+            {post ? "Update" : "Submit"}
+          </Button>
+        </div>
+      </form>
     );
 }

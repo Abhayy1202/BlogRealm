@@ -14,7 +14,7 @@ export default function RTE({name, control, label, defaultValue =""}) {
         render={({ field: { onChange } }) => (
           <Editor
             apiKey="l5run4tasklw4oxc7zmvcikv6l1qbqm2pywc30r49my79j1e"
-            initialValue="Welcome to BlogRealm!" 
+            initialValue="Welcome to BlogRealm!"
             init={{
               initialValue: defaultValue,
               height: 500,
@@ -44,7 +44,7 @@ export default function RTE({name, control, label, defaultValue =""}) {
               toolbar:
                 "undo redo | blocks | image | bold italic forecolor | alignleft aligncenter bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat | help",
               content_style:
-                "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+                "body { font-family:Helvetica,Arial,sans-serif; font-size:14px; background-color: #E0E0CE; }",
             }}
             onEditorChange={onChange}
           />

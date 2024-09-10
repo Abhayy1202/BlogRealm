@@ -5,7 +5,6 @@ import authService from "./appwrite/auth"
 import {login, logout} from "./store/authSlice"
 import { Footer, Header } from './components'
 import { Outlet } from 'react-router-dom'
-import background from "../Images/blog2.jpg";
 import { ThemeProvider } from "./components/Header/context/Theme.jsx";
 
 function App() {
@@ -41,21 +40,12 @@ function App() {
   }, [themeMode]);
 
   return !loading ? (
-    <div
-      className="min-h-screen flex flex-wrap content-between "
-      // style={{
-      //   backgroundImage: `url('${background}')`, // Ensure this path points correctly to your image
-      //   backgroundSize: "cover",
-      //   backgroundPosition: "center",
-      //   backgroundRepeat: "no-repeat",
-      //   minHeight: "100vh", // Ensures the div covers the entire viewport height
-      // }}
-    >
-      <div className="min-h-screen flex-col w-full flex">
+    <div className="min-h-screen flex flex-wrap content-between ">
+      <div className=" h-screen flex-col w-full flex">
         <ThemeProvider value={{ themeMode, lightmode, darkmode }}>
           <Header />
-          <main className="flex-grow">
-            <Outlet/>
+          <main className=" bg-gradient-to-r from-[#C9C19F] to-[#96897B] dark:from-[#151515] dark:to-[#091a55] flex-grow overflow-auto h-full">
+            <Outlet />
           </main>
           <Footer />
         </ThemeProvider>

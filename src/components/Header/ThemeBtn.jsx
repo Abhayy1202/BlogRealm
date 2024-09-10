@@ -14,7 +14,8 @@ function ThemeBtn() {
 
   return (
     <button
-      className="relative rounded-full p-4 duration-200 hover:bg-blue-100"
+      className="relative rounded-full p-4 duration-200 hover:bg-blue-100
+      dark:hover:bg-slate-600 "
       onClick={onChangeBtn}
     >
       {/* Sun Icon */}
