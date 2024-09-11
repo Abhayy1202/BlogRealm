@@ -4,6 +4,10 @@
 
 [Live Demo](https://blog-realm.vercel.app/)
 
+## Demo Account
+- admin@gmail.com
+- Pass-> 12345678
+  
 ## Features
 
 - Create and edit blog posts with a rich text editor (TinyMCE).
