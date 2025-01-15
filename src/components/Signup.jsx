@@ -1,35 +1,35 @@
-import React, {useState} from 'react'
-import authService from '../appwrite/auth'
-import {Link ,useNavigate} from 'react-router-dom'
-import {login} from '../store/authSlice'
-import {Button, Input, Logo} from './index.js'
-import {useDispatch} from 'react-redux'
-import {useForm} from 'react-hook-form'
+import React, { useState } from "react";
+import authService from "../appwrite/auth";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "../store/authSlice";
+import { Button, Input, Logo } from "./index.js";
+import { useDispatch } from "react-redux";
+import { useForm } from "react-hook-form";
 
 function Signup() {
-    const navigate = useNavigate()
-    const [error, setError] = useState("")
-    const dispatch = useDispatch()
-    const {register, handleSubmit} = useForm()
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const dispatch = useDispatch();
+  const { register, handleSubmit } = useForm();
 
-    const create = async(data) => {
-        setError("")
-        try {
-            const userData = await authService.createAccount(data)
-            if (userData) {
-                const userData = await authService.getCurrentUser()
-                if(userData) dispatch(login(userData));
-                navigate("/")
-            }
-        } catch (error) {
-            setError(error.message)
-        }
+  const create = async (data) => {
+    setError("");
+    try {
+      const userData = await authService.createAccount(data);
+      if (userData) {
+        const userData = await authService.getCurrentUser();
+        if (userData) dispatch(login(userData));
+        navigate("/");
+      }
+    } catch (error) {
+      setError(error.message);
     }
+  };
 
   return (
     <section
       id="authentication"
-      class="min-h-screen bg-neutral-100 dark:bg-neutral-800 py-20"
+      className="min-h-screen bg-neutral-100 dark:bg-neutral-800 py-20"
     >
       <div className="max-w-md mx-auto px-4">
         <div
@@ -56,9 +56,9 @@ function Signup() {
 
           <div
             id="registerForm"
-            class=" p-8 animate__animated animate__fadeIn"
+            className=" p-8 animate__animated animate__fadeIn"
           >
-            <form onSubmit={handleSubmit(create)} class="space-y-6">
+            <form onSubmit={handleSubmit(create)} className="space-y-6">
               <div>
                 <Input
                   label="Full Name: "
@@ -95,13 +95,12 @@ function Signup() {
                   })}
                 />
               </div>
-                <Button
-                  type="submit"
-                  className="w-full py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
-                >
-                  Create Account
-                </Button>
-          
+              <Button
+                type="submit"
+                className="w-full py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+              >
+                Create Account
+              </Button>
             </form>
           </div>
         </div>
@@ -110,4 +109,4 @@ function Signup() {
   );
 }
 
-export default Signup
+export default Signup;

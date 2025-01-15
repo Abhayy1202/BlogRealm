@@ -1,4 +1,4 @@
-import React, { useCallback,useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Input, RTE, Select } from "..";
 import appwriteService from "../../appwrite/config.js";
@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export default function PostForm({ post }) {
-  const { register, handleSubmit, watch, setValue, control, getValues,reset } =
+  const { register, handleSubmit, watch, setValue, control, getValues, reset } =
     useForm({
       defaultValues: {
         title: post?.title || "",
@@ -17,60 +17,60 @@ export default function PostForm({ post }) {
       },
     });
 
-    useEffect(() => {
-      if (post) {
-        reset({
-          title: post.title,
-          category: post?.category|| "Technology",
-          slug: post.$id,
-          content: post.content,
-          status: post.status,
-        });
-      }
-    }, [post, reset]);
+  useEffect(() => {
+    if (post) {
+      reset({
+        title: post.title,
+        category: post?.category || "Technology",
+        slug: post.$id,
+        content: post.content,
+        status: post.status,
+      });
+    }
+  }, [post, reset]);
 
-    // console.log("Edit post",post);
+  // console.log("Edit post",post);
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
 
   const submit = async (data) => {
-   if (post) {
-     let fileId = post.featuredImage; // Retain the old image by default
+    if (post) {
+      let fileId = post.featuredImage; // Retain the old image by default
 
-     if (data.image && data.image[0]) {
-       const file = await appwriteService.uploadFile(data.image[0]);
-       if (file) {
-         appwriteService.deleteFile(post.featuredImage);
-         fileId = file.$id;
-       }
-     }
+      if (data.image && data.image[0]) {
+        const file = await appwriteService.uploadFile(data.image[0]);
+        if (file) {
+          appwriteService.deleteFile(post.featuredImage);
+          fileId = file.$id;
+        }
+      }
 
-     const dbPost = await appwriteService.updatePost(post.$id, {
-       ...data,
-       featuredImage: fileId,
-       author: userData.name,
-     });
+      const dbPost = await appwriteService.updatePost(post.$id, {
+        ...data,
+        featuredImage: fileId,
+        author: userData.name,
+      });
 
-     if (dbPost) {
-       navigate(`/post/${dbPost.$id}`);
-     }
-   } else {
-     const file = await appwriteService.uploadFile(data.image[0]);
+      if (dbPost) {
+        navigate(`/post/${dbPost.$id}`);
+      }
+    } else {
+      const file = await appwriteService.uploadFile(data.image[0]);
 
-     if (file) {
-       const fileId = file.$id;
-       data.featuredImage = fileId;
-       const dbPost = await appwriteService.createPost({
-         ...data,
-         userId: userData.$id,
-         author: userData.name,
-       });
+      if (file) {
+        const fileId = file.$id;
+        data.featuredImage = fileId;
+        const dbPost = await appwriteService.createPost({
+          ...data,
+          userId: userData.$id,
+          author: userData.name,
+        });
 
-       if (dbPost) {
-         navigate(`/post/${dbPost.$id}`);
-       }
-     }
-   }
+        if (dbPost) {
+          navigate(`/post/${dbPost.$id}`);
+        }
+      }
+    }
   };
 
   const slugTransform = useCallback((value) => {
@@ -113,17 +113,17 @@ export default function PostForm({ post }) {
                 {...register("title", { required: true })}
               />
             </div>
-            <div class="flex gap-4">
-              <div class="w-1/2">
-              <Select
-                options={["Technology", "Design", "Development", "Writing"]}
-                label="Category"
-                className="w-full"
-                {...register("category", { required: true })}
-              />
+            <div className="flex gap-4">
+              <div className="w-1/2">
+                <Select
+                  options={["Technology", "Design", "Development", "Writing"]}
+                  label="Category"
+                  className="w-full"
+                  {...register("category", { required: true })}
+                />
               </div>
-              <div class="w-1/2">
-                {/* <label class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
+              <div className="w-1/2">
+                {/* <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
                   Slug
                 </label> */}
                 <Input
@@ -138,11 +138,11 @@ export default function PostForm({ post }) {
                 />
               </div>
             </div>
-            <div class="border-2 border-dashed border-neutral-300 dark:border-neutral-700 rounded-lg p-6 text-center">
-              <div class="flex flex-col items-center">
+            <div className="border-2 border-dashed border-neutral-300 dark:border-neutral-700 rounded-lg p-6 text-center">
+              <div className="flex flex-col items-center">
                 {/* if there is image then preview it instead of svg */}
                 <svg
-                  class="w-12 h-12 text-neutral-400 mb-4"
+                  className="w-12 h-12 text-neutral-400 mb-4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -154,7 +154,7 @@ export default function PostForm({ post }) {
                     d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                   />
                 </svg>
-                <p class="text-neutral-600 dark:text-neutral-400 mb-2">
+                <p className="text-neutral-600 dark:text-neutral-400 mb-2">
                   Drag and drop your featured image here
                 </p>
 
@@ -169,7 +169,7 @@ export default function PostForm({ post }) {
               </div>
             </div>
             <div>
-              <label class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
+              <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
                 Content
               </label>
               <RTE

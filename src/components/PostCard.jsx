@@ -1,36 +1,36 @@
-import React ,{useEffect,useState}from "react";
+import React, { useEffect, useState } from "react";
 import appwriteService from "../appwrite/config";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-function PostCard({post}) {
+function PostCard({ post }) {
   const { $id, title, category, featuredImage, content, author } = post;
   const excerpt = content.substring(0, 40);
-  const [imageUrl, setImageUrl] = useState('');
+  const [imageUrl, setImageUrl] = useState("");
   const date = new Date(post?.$updatedAt);
   const options = { year: "numeric", month: "long", day: "numeric" };
   const UpDate = date?.toLocaleDateString("en-US", options);
-  const Postcategory = category||"Not Specified";
-  const owner= author||"John Doe";
+  const Postcategory = category || "Not Specified";
+  const owner = author || "John Doe";
   // console.log("PostCard -",post);
 
   useEffect(() => {
-   const fetchImagePreview = async () => {
-    if (featuredImage.length !== 0) {
-      const imageUrl = await appwriteService.getFilePreview(featuredImage);
-      setImageUrl(imageUrl);
-      console.log("imageUrl -",imageUrl);
-    }
-  };
-   fetchImagePreview();
-  }, [featuredImage])
-  
+    const fetchImagePreview = async () => {
+      if (featuredImage.length !== 0) {
+        const imageUrl = await appwriteService.getFilePreview(featuredImage);
+        setImageUrl(imageUrl);
+        console.log("imageUrl -", imageUrl);
+      }
+    };
+    fetchImagePreview();
+  }, [featuredImage]);
+
   return (
     <>
       <div className="bg-white dark:bg-neutral-800 rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 animate__animated animate__fadeIn">
         <div className="relative pb-[60%] bg-neutral-200 dark:bg-neutral-700">
           {/* Blog Card 1 Content */}
-          {imageUrl? (
+          {imageUrl ? (
             <div className="absolute inset-0">
               <img
                 src={imageUrl}
@@ -41,7 +41,7 @@ function PostCard({post}) {
           ) : (
             <div className="absolute inset-0 flex items-center justify-center">
               <svg
-                class="w-12 h-12 text-neutral-400"
+                className="w-12 h-12 text-neutral-400"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -58,26 +58,26 @@ function PostCard({post}) {
         </div>
         <div className="p-6">
           {/* Blog Card 1 Content */}
-          <div class="flex items-center mb-4">
-            <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-sm px-3 py-1 rounded-full">
-             {Postcategory}
+          <div className="flex items-center mb-4">
+            <span className="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-sm px-3 py-1 rounded-full">
+              {Postcategory}
             </span>
           </div>
-          <h3 class="text-xl font-semibold mb-2 text-neutral-800 dark:text-white">
+          <h3 className="text-xl font-semibold mb-2 text-neutral-800 dark:text-white">
             {title}
           </h3>
-          <p class="text-neutral-600 dark:text-neutral-300 text-sm mb-4">
+          <p className="text-neutral-600 dark:text-neutral-300 text-sm mb-4">
             {excerpt.replace("<p>", "").replace("</p>", "")}...
           </p>
-          <div class="flex items-center justify-between">
-            <div class="flex items-center">
-              <div class="w-8 h-8 rounded-full bg-neutral-300 dark:bg-neutral-600"></div>
-              <div class="ml-3">
-                <p class="text-sm font-medium text-neutral-800 dark:text-white">
-                 {owner}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              <div className="w-8 h-8 rounded-full bg-neutral-300 dark:bg-neutral-600"></div>
+              <div className="ml-3">
+                <p className="text-sm font-medium text-neutral-800 dark:text-white">
+                  {owner}
                   {/* Owner Name */}
                 </p>
-                <p class="text-xs text-neutral-500 dark:text-neutral-400">
+                <p className="text-xs text-neutral-500 dark:text-neutral-400">
                   {UpDate}
                   {/* update date */}
                 </p>

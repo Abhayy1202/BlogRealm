@@ -21,10 +21,10 @@ const Featured = () => {
           Featured Posts
         </h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div class="bg-white dark:bg-neutral-900 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-1 transition-transform duration-300 animate__animated animate__fadeInUp">
-            <div class="bg-neutral-200 dark:bg-neutral-700 h-48 flex items-center justify-center">
+          <div className="bg-white dark:bg-neutral-900 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-1 transition-transform duration-300 animate__animated animate__fadeInUp">
+            <div className="bg-neutral-200 dark:bg-neutral-700 h-48 flex items-center justify-center">
               <svg
-                class="w-12 h-12 text-neutral-400"
+                className="w-12 h-12 text-neutral-400"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -37,34 +37,34 @@ const Featured = () => {
                 />
               </svg>
             </div>
-            <div class="p-6">
-              <div class="flex items-center mb-4">
-                <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-sm px-3 py-1 rounded-full">
+            <div className="p-6">
+              <div className="flex items-center mb-4">
+                <span className="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-sm px-3 py-1 rounded-full">
                   Technology
                 </span>
               </div>
-              <h3 class="text-xl font-semibold mb-2 text-neutral-800 dark:text-white">
+              <h3 className="text-xl font-semibold mb-2 text-neutral-800 dark:text-white">
                 The Future of Web Development
               </h3>
-              <p class="text-neutral-600 dark:text-neutral-300 text-sm mb-4">
+              <p className="text-neutral-600 dark:text-neutral-300 text-sm mb-4">
                 Exploring the latest trends and technologies shaping the future
                 of web development...
               </p>
-              <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                  <div class="w-8 h-8 rounded-full bg-neutral-300 dark:bg-neutral-600"></div>
-                  <div class="ml-3">
-                    <p class="text-sm font-medium text-neutral-800 dark:text-white">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <div className="w-8 h-8 rounded-full bg-neutral-300 dark:bg-neutral-600"></div>
+                  <div className="ml-3">
+                    <p className="text-sm font-medium text-neutral-800 dark:text-white">
                       John Doe
                     </p>
-                    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+                    <p className="text-xs text-neutral-500 dark:text-neutral-400">
                       June 1, 2023
                     </p>
                   </div>
                 </div>
                 <a
                   href="#"
-                  class="text-purple-600 hover:text-purple-700 text-sm font-medium"
+                  className="text-purple-600 hover:text-purple-700 text-sm font-medium"
                 >
                   Read More →
                 </a>

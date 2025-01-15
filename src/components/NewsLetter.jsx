@@ -57,10 +57,10 @@ function NewsLetter() {
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 animate__animated animate__fadeInDown">
-            Stay Updated with <span class="text-purple-500">BlogRealm</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 animate__animated animate__fadeInDown">
+            Stay Updated with <span className="text-purple-500">BlogRealm</span>
           </h2>
-          <p class="text-neutral-300 mb-8 animate__animated animate__fadeIn animate__delay-1s">
+          <p className="text-neutral-300 mb-8 animate__animated animate__fadeIn animate__delay-1s">
             Subscribe to our newsletter and get the latest tech insights,
             writing tips, and exclusive content delivered straight to your
             inbox.
@@ -77,19 +77,18 @@ function NewsLetter() {
                 className="w-full px-6 py-3 rounded-lg bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                 required
               />
-              </div>
-              <button
-                type="submit"
-                className="px-8 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-300 flex items-center justify-center"
-              >
-                Subscribe
-              </button>
-           
+            </div>
+            <button
+              type="submit"
+              className="px-8 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-300 flex items-center justify-center"
+            >
+              Subscribe
+            </button>
           </form>
-          <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-neutral-400">
-            <div class="flex items-center">
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-neutral-400">
+            <div className="flex items-center">
               <svg
-                class="w-5 h-5 mr-2 text-purple-500"
+                className="w-5 h-5 mr-2 text-purple-500"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -103,9 +102,9 @@ function NewsLetter() {
               </svg>{" "}
               Weekly Updates
             </div>
-            <div class="flex items-center">
+            <div className="flex items-center">
               <svg
-                class="w-5 h-5 mr-2 text-purple-500"
+                className="w-5 h-5 mr-2 text-purple-500"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -119,9 +118,9 @@ function NewsLetter() {
               </svg>{" "}
               Exclusive Content
             </div>
-            <div class="flex items-center">
+            <div className="flex items-center">
               <svg
-                class="w-5 h-5 mr-2 text-purple-500"
+                className="w-5 h-5 mr-2 text-purple-500"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
