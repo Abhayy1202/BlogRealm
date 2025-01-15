@@ -1,18 +1,8 @@
-import React, {useEffect, useRef, useState} from 'react'
-import appwriteService from "../appwrite/config";
-import {Container, PostCard} from '../components'
+import React, {useEffect, useRef} from 'react'
+import {ParticleEffect} from '../components'
 import Typed from 'typed.js';
 
 function Home() {
-    const [posts, setPosts] = useState([])
-
-    useEffect(() => {
-        appwriteService.getPosts().then((posts) => {
-            if (posts) {
-                setPosts(posts.documents)
-            }
-        })
-    }, [])
 
     const el = useRef(null);
 
@@ -32,37 +22,70 @@ function Home() {
         typed.destroy();
       };
     }, []);
-  
-    if (posts.length === 0) {
-        return (
-          <div className="w-full py-8 mt-4 text-center mb-24">
-            <Container>
-              <div className="flex flex-col items-center py-8">
-                <h1 className="text-4xl md:text-6xl font-bold text-center py-2 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#5d5650] to-[#537485] dark:from-pink-800 dark:to-violet-700">
-                  Welcome to the realm of <span ref={el} />
-                </h1>
-                <p className="text-lg md:text-xl bg-clip-text text-transparent bg-gradient-to-r from-[#5d5650] to-[#537485]  dark:from-pink-800 dark:to-violet-700 text-center">
-                  Explore a world of captivating stories and insightful
-                  knowledge.
-                </p>
-              </div>
-            </Container>
-          </div>
-        );
-    }
-    return (
-        <div className='w-full py-8 h-full'>
-            <Container>
-                <div className='flex flex-wrap h-full'>
-                    {posts.map((post) => (
-                        <div key={post.$id} className='p-2 w-1/4 h-full'>
-                            <PostCard {...post} />
-                        </div>
-                    ))}
-                </div>
-            </Container>
+
+  return (
+    <section
+      id="hero"
+      className="bg-neutral-900 min-h-[70vh] flex items-center relative overflow-hidden "
+    >
+      {/* background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/50 to-neutral-900/50"></div>
+        <div className="absolute inset-0">
+          <svg
+            className="absolute w-full h-full opacity-10"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+          >
+            <path d="M0,0 L100,0 L100,100 L0,100 Z" fill="url(#grid)"></path>
+            <defs>
+              <pattern
+                id="grid"
+                width="10"
+                height="10"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M 10 0 L 0 0 0 10"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="0.5"
+                ></path>
+              </pattern>
+            </defs>
+          </svg>
         </div>
-    )
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate__animated animate__fadeInDown">
+            Welcome to the realm of{" "}
+            <span className="text-purple-500" ref={el} />
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto animate__animated animate__fadeIn animate__delay-1s">
+            Explore a world of captivating stories and insightful knowledge.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4 animate__animated animate__fadeInUp animate__delay-2s">
+            <a
+              href="#blogGrid"
+              className="px-8 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-300 text-lg font-semibold"
+            >
+              Start Reading
+            </a>
+            <a
+              href="#edit-post"
+              className="px-8 py-3 bg-neutral-800 text-white rounded-lg hover:bg-neutral-700 transition-colors duration-300 text-lg font-semibold border border-purple-500"
+            >
+              Start Writing
+            </a>
+          </div>
+        </div>
+      </div>
+      <ParticleEffect />
+    </section>
+    
+  );
 }
 
 export default Home

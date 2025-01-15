@@ -4,6 +4,9 @@
 
 [Live Demo](https://blog-realm.vercel.app/)
 
+## Demo Account
+- admin@gmail.com
+- 12345678
 ## Features
 
 - Create and edit blog posts with a rich text editor (TinyMCE).
@@ -49,7 +52,6 @@ The following are the key packages used in the project:
 - Appwrite: For backend services like authentication, database, etc.
 - @tinymce/tinymce-react: For embedding a rich text editor.
 - HTML React Parser: To parse HTML content within React components.
-- Lucide React: For scalable vector icons.
 ### Development Dependencies
 - Vite: A fast build tool for modern web projects.
 - ESLint: To maintain code quality and consistency.

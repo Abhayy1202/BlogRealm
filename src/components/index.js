@@ -12,6 +12,12 @@ import PostForm from "./post-form/PostForm";
 import PostCard from "./PostCard";
 import AuthLayout from "./AuthLayout";
 import Input from "./Input";
+import NewsLetter from "./NewsLetter.jsx";
+import Featured from "./Featured.jsx";
+import BlogGrid from "./blogGrid.jsx";
+import ParticleEffect from "./ParticleEffect.jsx";
+import ThemeBtn from "./Header/ThemeBtn.jsx"
+import Profile from "./Profile.jsx";
 export {
     Header,
     Footer,
@@ -27,4 +33,12 @@ export {
     AuthLayout, 
     Input,
     Select,
+    NewsLetter,
+    Featured,
+    BlogGrid,
+    ParticleEffect,
+    ThemeBtn,
+    Profile
+
+
 }

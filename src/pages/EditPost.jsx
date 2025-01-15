@@ -4,11 +4,12 @@ import appwriteService from "../appwrite/config";
 import { useNavigate,  useParams } from 'react-router-dom';
 
 function EditPost() {
-    const [post, setPosts] = useState(null)
+    const [post, setPosts] = useState([])
     const {slug} = useParams()
     const navigate = useNavigate()
 
     useEffect(() => {
+        const fetchPosts = async () => {
         if (slug) {
             appwriteService.getPost(slug).then((post) => {
                 if (post) {
@@ -18,14 +19,16 @@ function EditPost() {
         } else {
             navigate('/')
         }
+    }
+        fetchPosts();
     }, [slug, navigate])
   return post ? (
-    <div className='py-8'>
-        <Container>
+    <div>
+       
             <PostForm post={post} />
-        </Container>
+       
     </div>
-  ) : null
+  ) : <p>Loading...</p>
 }
 
 export default EditPost

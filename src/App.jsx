@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import './App.css'
 import authService from "./appwrite/auth"
 import {login, logout} from "./store/authSlice"
-import { Footer, Header } from './components'
+import { Footer, Header,NewsLetter,Featured, BlogGrid, Profile } from './components'
 import { Outlet } from 'react-router-dom'
 import { ThemeProvider } from "./components/Header/context/Theme.jsx";
 
@@ -24,6 +24,7 @@ function App() {
       .getCurrentUser()
       .then((userData) => {
         if (userData) {
+          // console.log("UserData",userData);
           dispatch(login({ userData }));
         } else {
           dispatch(logout());
@@ -40,18 +41,19 @@ function App() {
   }, [themeMode]);
 
   return !loading ? (
-    <div className="min-h-screen flex flex-wrap content-between ">
-      <div className=" h-screen flex-col w-full flex">
-        <ThemeProvider value={{ themeMode, lightmode, darkmode }}>
-          <Header />
-          <main className=" bg-gradient-to-r from-[#C9C19F] to-[#96897B] dark:from-[#151515] dark:to-[#091a55] flex-grow overflow-auto h-full">
-            <Outlet />
-          </main>
-          <Footer />
-        </ThemeProvider>
-      </div>
-    </div>
-  ) : null;
+    // <div className="min-h-screen flex flex-wrap content-between ">
+    //   <div className=" h-screen flex-col w-full flex">
+    <ThemeProvider value={{ themeMode, lightmode, darkmode }}>
+      <Header />
+      <main id="main-content" className="flex-1 relative ">
+        <Outlet />
+      </main>
+      <Footer />
+    </ThemeProvider>
+  ) : //   </div>
+  // </div>
+  null;
 }
 
 export default App
+
