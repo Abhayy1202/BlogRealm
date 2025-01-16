@@ -176,30 +176,16 @@ export class Service {
     }
   }
 
-   async getFilePreview(fileId) {
+    getFilePreview(fileId) {
     try {
       const previewUrl = this.bucket.getFilePreview(
         conf.appwriteBucketId,
         fileId,
-       {
-          width: 0,
-          height: 0,
-          gravity: 'center',
-          quality: 90,
-          borderWidth: 5,
-          borderColor: 'CDCA30',
-          borderRadius: 15,
-          opacity: 1,
-          rotation: 0,
-          background: 'FFFFFF',
-          output: 'jpg',
-        }
-
         //   (headers = {
         //     "Cache-Control": "public, max-age=3600", // 1 hour caching
         //   })
       );
-      return previewUrl.href;
+      return previewUrl;
     } catch (error) {
       console.log("Appwrite service :: imagePreview :: error", error);
       return '';

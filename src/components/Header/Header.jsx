@@ -66,11 +66,12 @@ function Header() {
             <div className="hidden md:flex items-center space-x-8">
               <ul className="flex items-center space-x-8">
                 {navItems
-                  .filter((item) => item.active)
-                  .map((item) => (
+                  // .filter((item) => item.active)
+                  .map((item) => item.active?(
                     <li key={item.name}>
                       <a
                         href={item.slug}
+                        target="_self"
                         className={
                           item.name === "Login"||item.name === "Signup"
                             ? "bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors text-center"
@@ -80,7 +81,7 @@ function Header() {
                         {item.name}
                       </a>
                     </li>
-                  ))}
+                  ):null)}
                 {authStatus && (
                   <li>
                     <LogoutBtn />

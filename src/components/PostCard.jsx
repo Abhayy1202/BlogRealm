@@ -15,9 +15,9 @@ function PostCard({ post }) {
   // console.log("PostCard -",post);
 
   useEffect(() => {
-    const fetchImagePreview = async () => {
+    const fetchImagePreview = () => {
       if (featuredImage) {
-        const imageUrl = await appwriteService.getFilePreview(featuredImage);
+        const imageUrl = appwriteService.getFilePreview(featuredImage);
         setImageUrl(imageUrl);
         console.log("imageUrl -", imageUrl);
       }

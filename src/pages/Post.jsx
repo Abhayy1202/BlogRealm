@@ -38,9 +38,9 @@ export default function Post() {
 
   
    useEffect(() => {
-     const fetchImagePreview = async () => {
+     const fetchImagePreview =  () => {
        if (post?.featuredImage) {
-         const imageUrl = await appwriteService.getFilePreview(
+         const imageUrl =  appwriteService.getFilePreview(
            post.featuredImage
          );
          setImageUrl(imageUrl);
@@ -142,7 +142,7 @@ export default function Post() {
                   className="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-4 py-2 rounded-full"
                   id="el-9n76juz2"
                 >
-                  post.Category{post?.category}
+                  {post?.category}
                 </span>
               </div>
             </div>
@@ -217,5 +217,5 @@ export default function Post() {
           </div>
         </div>
       </section>
-    ):<p>Loading...</p>;
+    ):null;
   }
