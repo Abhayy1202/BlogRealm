@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import appwriteService from "../appwrite/config";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+
 
 function PostCard({ post }) {
   const { $id, title, category, featuredImage, content, author } = post;
   const excerpt = content.substring(0, 40);
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState('');
   const date = new Date(post?.$updatedAt);
   const options = { year: "numeric", month: "long", day: "numeric" };
   const UpDate = date?.toLocaleDateString("en-US", options);
@@ -16,7 +16,7 @@ function PostCard({ post }) {
 
   useEffect(() => {
     const fetchImagePreview = async () => {
-      if (featuredImage.length !== 0) {
+      if (featuredImage) {
         const imageUrl = await appwriteService.getFilePreview(featuredImage);
         setImageUrl(imageUrl);
         console.log("imageUrl -", imageUrl);

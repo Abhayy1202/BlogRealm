@@ -6,9 +6,9 @@ import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 
 export default function Post() {
-    const [post, setPost] = useState(null);
+    const [post, setPost] = useState('');
+     const [imageUrl, setImageUrl] = useState("");
     const { slug } = useParams();
-    console.log("slug",slug);
     const navigate = useNavigate();
 
     const userData = useSelector((state) => state.auth.userData);
@@ -23,8 +23,10 @@ export default function Post() {
         if (slug) {
             await appwriteService.getPost(slug).then((post) => {
                 if (post) {
-                  // console.log("post fetched - ",post.$id);
+                  console.log("post fetched - ",post);
+                
                   setPost(post); 
+                  
                 }
                 else navigate("/");
             })
@@ -33,6 +35,24 @@ export default function Post() {
     }
     fetchPosts();
   }, [slug, navigate]);
+
+  
+   useEffect(() => {
+     const fetchImagePreview = async () => {
+       if (post?.featuredImage) {
+         const imageUrl = await appwriteService.getFilePreview(
+           post.featuredImage
+         );
+         setImageUrl(imageUrl);
+         console.log("imageUrl -", imageUrl);
+       }
+     };
+     if (post) {
+       fetchImagePreview();
+     }
+   }, [post]);
+  
+ 
 
     const deletePost = () => {
         appwriteService.deletePost(post.$id).then((status) => {
@@ -79,21 +99,21 @@ export default function Post() {
               className="text-4xl font-bold text-left px-4 pt-2"
               id="el-srq77qch"
             >
-              post.title{post?.title}
+              {post?.title}
             </h2>
           </div>
           <div
             className="relative h-96 bg-neutral-200  dark:bg-neutral-700"
             id="el-1qndadge p-[7px] m-[45px]"
           >
-            <img
-              src={appwriteService.getFilePreview(post?.featuredImage)}
+           {imageUrl && <img
+              src={imageUrl}
               // src="./Designer.png"
               alt="Blog post cover"
               className="w-full h-full object-contain transition-opacity duration-300 opacity-100"
               id="el-ngh26yy4"
               loading="lazy"
-            />
+            />}
           </div>
           <div className="p-8" id="el-uvv4he2n">
             <div className="flex items-center mb-8" id="el-e53n232c">
