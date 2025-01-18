@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Button, Input, RTE, Select } from "..";
+import { AI_helper, Button, Input, RTE, Select } from "..";
 import appwriteService from "../../appwrite/config.js";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -32,6 +32,7 @@ export default function PostForm({ post }) {
   // console.log("Edit post",post);
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
+  const [Ai, setAi] = React.useState(false);
 
   const submit = async (data) => {
     if (post) {
@@ -94,6 +95,11 @@ export default function PostForm({ post }) {
     return () => subscription.unsubscribe();
   }, [watch, slugTransform, setValue]);
 
+  const handleApply = (prompt, setPrompt) => {
+    setValue("content", prompt);
+    setPrompt("");
+  };
+
   return (
     <section
       id="edit-post"
@@ -148,9 +154,9 @@ export default function PostForm({ post }) {
                   viewBox="0 0 24 24"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                   />
                 </svg>
@@ -181,15 +187,39 @@ export default function PostForm({ post }) {
             </div>
 
             {/* <div className="w-1/3 px-2 dark:text-gray-200"> */}
-
-            <Select
-              options={["Active", "Inactive"]}
-              label="Status"
-              {...register("status", { required: true })}
-            />
+            <div className="flex gap-4">
+              <div className="w-1/2">
+                <Select
+                  options={["Active", "Inactive"]}
+                  className="w-2/3"
+                  label="Status"
+                  {...register("status", { required: true })}
+                />
+              </div>
+              <div className="w-1/2 ">
+                <Button
+                  type="button"
+                  className=" bg-purple-500 text-white p-2 rounded-full shadow-lg transition-opacity duration-300 opacity-100 hover:opacity-80"
+                  onClick={(e) => (e.preventDefault(), setAi(!Ai))}
+                >
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-sparkle"
+                  >
+                    <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
+                  </svg>
+                </Button>
+              </div>
+            </div>
             <Button
               type="submit"
-              bgColor={post ? "bg-green-500" : undefined}
               className="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700"
             >
               {post ? "Update" : "Submit"}
@@ -198,6 +228,7 @@ export default function PostForm({ post }) {
           </form>
         </div>
       </div>
+      <AI_helper handleApply={handleApply} Ai={Ai} setAi={setAi} />
     </section>
   );
 }

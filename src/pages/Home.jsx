@@ -1,27 +1,28 @@
-import React, {useEffect, useRef} from 'react'
-import {ParticleEffect} from '../components'
-import Typed from 'typed.js';
+import React, { useEffect, useRef } from "react";
+import { ParticleEffect } from "../components";
+import { Link } from "react-router-dom";
+import Typed from "typed.js";
+import { useSelector } from "react-redux";
 
 function Home() {
+  const el = useRef(null);
+  const authStatus = useSelector((state) => state.auth.status);
+  useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: ["Blogs", "Stories to Inspire", "Knowledge Hub"],
+      startDelay: 300,
+      typeSpeed: 100,
+      backSpeed: 50,
+      backDelay: 1000,
+      loop: true,
+      showCursor: true,
+      cursorChar: "|",
+    });
 
-    const el = useRef(null);
-
-    useEffect(() => {
-      const typed = new Typed(el.current, {
-        strings: ["Blogs", "Stories to Inspire", "Knowledge Hub"],
-        startDelay: 300,
-        typeSpeed: 100,
-        backSpeed: 50,
-        backDelay: 1000,
-        loop: true,
-        showCursor: true,
-        cursorChar: "|",
-      });
-
-      return () => {
-        typed.destroy();
-      };
-    }, []);
+    return () => {
+      typed.destroy();
+    };
+  }, []);
 
   return (
     <section
@@ -48,8 +49,8 @@ function Home() {
                 <path
                   d="M 10 0 L 0 0 0 10"
                   fill="none"
-                  stroke="currentColor"
-                  stroke-width="0.5"
+                  stroke="#1F2937"
+                  strokeWidth="0.5"
                 ></path>
               </pattern>
             </defs>
@@ -67,25 +68,24 @@ function Home() {
             Explore a world of captivating stories and insightful knowledge.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 animate__animated animate__fadeInUp animate__delay-2s">
-            <a
-              href="#blogGrid"
+            <Link
+              to={authStatus ? "#blogGrid" : "/login"}
               className="px-8 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-300 text-lg font-semibold"
             >
               Start Reading
-            </a>
-            <a
-              href="#edit-post"
+            </Link>
+            <Link
+              to={authStatus ? "/add-post" : "/login"}
               className="px-8 py-3 bg-neutral-800 text-white rounded-lg hover:bg-neutral-700 transition-colors duration-300 text-lg font-semibold border border-purple-500"
             >
               Start Writing
-            </a>
+            </Link>
           </div>
         </div>
       </div>
       <ParticleEffect />
     </section>
-    
   );
 }
 
-export default Home
+export default Home;

@@ -176,7 +176,7 @@ export class Service {
     }
   }
 
-    getFilePreview(fileId) {
+    async getFilePreview(fileId) {
     try {
       const previewUrl = this.bucket.getFilePreview(
         conf.appwriteBucketId,

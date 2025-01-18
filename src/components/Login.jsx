@@ -98,6 +98,7 @@ function Login() {
                 <a
                   href="#"
                   className="text-sm text-purple-600 hover:text-purple-700"
+                  onClick={() => alert("Feature Upcoming")}
                 >
                   Forgot password?
                 </a>
@@ -122,7 +123,10 @@ function Login() {
               </div>
 
               <div className="grid grid-cols-2 gap-4 mt-6">
-                <button className="flex items-center justify-center px-4 py-2 border border-neutral-300 dark:border-neutral-700 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors">
+                <button
+                  className="flex items-center justify-center px-4 py-2 border border-neutral-300 dark:border-neutral-700 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
+                  onClick={() => alert("Feature Upcoming")}
+                >
                   <svg className="w-5 h-5" viewBox="0 0 24 24">
                     <path
                       fill="currentColor"
@@ -143,8 +147,15 @@ function Login() {
                   </svg>
                   <span className="ml-2">Google</span>
                 </button>
-                <button className="flex items-center justify-center px-4 py-2 border border-neutral-300 dark:border-neutral-700 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <button
+                  className="flex items-center justify-center px-4 py-2 border border-neutral-300 dark:border-neutral-700 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
+                  onClick={() => alert("Feature Upcoming")}
+                >
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z" />
                   </svg>
                   <span className="ml-2">Facebook</span>

@@ -48,14 +48,14 @@ function NewsLetter() {
             <path
               d="M 10 0 L 0 0 0 10"
               fill="none"
-              stroke="currentColor"
+              stroke="#1F2937"
               strokeWidth="0.5"
             ></path>
           </pattern>
           <rect width="100%" height="100%" fill="url(#grid)"></rect>
         </svg>
       </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 animate__animated animate__fadeInDown">
             Stay Updated with <span className="text-purple-500">BlogRealm</span>
@@ -94,9 +94,9 @@ function NewsLetter() {
                 viewBox="0 0 24 24"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M5 13l4 4L19 7"
                 />
               </svg>{" "}
@@ -110,9 +110,9 @@ function NewsLetter() {
                 viewBox="0 0 24 24"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M5 13l4 4L19 7"
                 />
               </svg>{" "}
@@ -126,9 +126,9 @@ function NewsLetter() {
                 viewBox="0 0 24 24"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M5 13l4 4L19 7"
                 />
               </svg>{" "}

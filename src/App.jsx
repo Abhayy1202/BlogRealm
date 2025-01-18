@@ -41,8 +41,7 @@ function App() {
   }, [themeMode]);
 
   return !loading ? (
-    // <div className="min-h-screen flex flex-wrap content-between ">
-    //   <div className=" h-screen flex-col w-full flex">
+
     <ThemeProvider value={{ themeMode, lightmode, darkmode }}>
       <Header />
       <main id="main-content" className="flex-1 relative ">
@@ -50,8 +49,7 @@ function App() {
       </main>
       <Footer />
     </ThemeProvider>
-  ) : //   </div>
-  // </div>
+  ) :
   null;
 }
 

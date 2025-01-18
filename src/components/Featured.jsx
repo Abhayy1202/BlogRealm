@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import PostCard from "./PostCard";
 import appwriteService from "../appwrite/config";
+import {useSelector} from "react-redux";
 
 const Featured = () => {
   const [posts, setPosts] = useState([]);
+  const authStatus = useSelector((state) => state.auth.status);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -14,9 +16,9 @@ const Featured = () => {
     fetchPosts();
   }, []);
 
-  return (
+  return authStatus ? (
     <section id="featured" className="py-20 bg-neutral-100 dark:bg-neutral-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <h2 className="text-3xl font-bold text-center mb-12 text-neutral-800 dark:text-white animate__animated animate__fadeIn">
           Featured Posts
         </h2>
@@ -30,9 +32,9 @@ const Featured = () => {
                 viewBox="0 0 24 24"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                 />
               </svg>
@@ -72,12 +74,18 @@ const Featured = () => {
             </div>
           </div>
 
-          {posts?.map((post) => (
-            <PostCard key={post.$id} post={post} />
-          ))}
+          {posts?.length > 0 ? (
+            posts?.map((post) => <PostCard key={post.$id} post={post} />)
+          ) : (
+            <div className="col-span-full text-center text-neutral-600 dark:text-neutral-400">
+              No posts available.
+            </div>
+          )}
         </div>
       </div>
     </section>
+  ) : (
+    null
   );
 };
 

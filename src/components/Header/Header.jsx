@@ -1,9 +1,8 @@
 import * as React from "react";
-import { Logo, LogoutBtn, Container,ThemeBtn } from "../index";
+import { Logo, LogoutBtn, Container, ThemeBtn } from "../index";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
 
 function Header() {
   const authStatus = useSelector((state) => state.auth.status);
@@ -26,7 +25,7 @@ function Header() {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
       // console.log(currentScroll);
-      if (currentScroll > 100.0) {
+      if (currentScroll > 200.0) {
         setIsNavbarVisible(false); // Hide navbar
       } else {
         setIsNavbarVisible(true); // Show navbar
@@ -65,23 +64,22 @@ function Header() {
             </div>
             <div className="hidden md:flex items-center space-x-8">
               <ul className="flex items-center space-x-8">
-                {navItems
-                  // .filter((item) => item.active)
-                  .map((item) => item.active?(
+                {navItems.map((item) =>
+                  item.active ? (
                     <li key={item.name}>
-                      <a
-                        href={item.slug}
-                        target="_self"
+                      <button
+                        onClick={() => navigate(item.slug)}
                         className={
-                          item.name === "Login"||item.name === "Signup"
+                          item.name === "Login" || item.name === "Signup"
                             ? "bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors text-center"
                             : "hover:text-purple-400 transition-colors"
                         }
                       >
                         {item.name}
-                      </a>
+                      </button>
                     </li>
-                  ):null)}
+                  ) : null
+                )}
                 {authStatus && (
                   <li>
                     <LogoutBtn />
@@ -91,7 +89,6 @@ function Header() {
                   <ThemeBtn />
                 </li>
               </ul>
-
             </div>
             <div className="md:hidden">
               <button
@@ -106,9 +103,9 @@ function Header() {
                   viewBox="0 0 24 24"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M4 6h16M4 12h16M4 18h16"
                   ></path>
                 </svg>

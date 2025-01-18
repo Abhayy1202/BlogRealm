@@ -18,6 +18,7 @@ import BlogGrid from "./blogGrid.jsx";
 import ParticleEffect from "./ParticleEffect.jsx";
 import ThemeBtn from "./Header/ThemeBtn.jsx"
 import Profile from "./Profile.jsx";
+import AI_helper from "./AI_helper.jsx";
 export {
     Header,
     Footer,
@@ -38,7 +39,8 @@ export {
     BlogGrid,
     ParticleEffect,
     ThemeBtn,
-    Profile
+    Profile,
+    AI_helper
 
 
 }
