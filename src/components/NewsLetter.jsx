@@ -55,7 +55,7 @@ function NewsLetter() {
           <rect width="100%" height="100%" fill="url(#grid)"></rect>
         </svg>
       </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 animate__animated animate__fadeInDown">
             Stay Updated with <span className="text-purple-500">BlogRealm</span>

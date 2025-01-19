@@ -25,7 +25,7 @@ function Header() {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
       // console.log(currentScroll);
-      if (currentScroll > 200.0) {
+      if (currentScroll > 150.0) {
         setIsNavbarVisible(false); // Hide navbar
       } else {
         setIsNavbarVisible(true); // Show navbar

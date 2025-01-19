@@ -36,18 +36,18 @@ function Signup() {
           className={`bg-white dark:bg-neutral-900 rounded-xl shadow-lg overflow-hidden`}
         >
           <div className="mb-2 flex justify-center">
-            <span className="inline-block w-full pl-5 max-w-[100px]">
+            <span className="inline-block w-full pt-5 pl-5 max-w-[100px]">
               <Logo width="100%" />
             </span>
           </div>
-          <h2 className="text-center text-2xl font-bold leading-tight">
+          <h2 className="text-center text-2xl font-bold text-neutral-700 dark:text-neutral-300 leading-tight">
             Sign up to create account
           </h2>
-          <p className="mt-2 text-center text-base text-black/60">
+          <p className="mt-2 text-center text-base text-black/60 dark:text-neutral-400">
             Already have an account?&nbsp;
             <Link
               to="/login"
-              className="font-medium text-primary transition-all duration-200 hover:underline"
+              className="font-medium text-primary transition-all duration-200 hover:underline dark:text-neutral-300 "
             >
               Sign In
             </Link>
